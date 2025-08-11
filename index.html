@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced User Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        header, section, footer {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        header {
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+        legend {
+            font-weight: bold;
+            padding: 0 10px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        audio, video {
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Registration Form</h1>
+        <p>Please fill out this form to create your account</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#personal">Personal Information</a></li>
+            <li><a href="#account">Account Details</a></li>
+            <li><a href="#preferences">Preferences</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form id="registrationForm" action="/submit" method="post" autocomplete="on" novalidate>
+            <section id="personal">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name*</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name*</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <label for="email">Email Address*</label>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" min="1900-01-01" max="2023-12-31">
+
+                    <label for="bio">Short Biography</label>
+                    <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+                </fieldset>
+            </section>
+
+            <section id="account">
+                <fieldset>
+                    <legend>Account Details</legend>
+                    
+                    <label for="username">Username*</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required minlength="4" maxlength="20">
+
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+
+                    <label for="confirmPassword">Confirm Password*</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password" required>
+
+                    <label for="securityQuestion">Security Question</label>
+                    <select id="securityQuestion" name="securityQuestion">
+                        <option value="" selected disabled>Select a security question</option>
+                        <option value="pet">What was your first pet's name?</option>
+                        <option value="school">What elementary school did you attend?</option>
+                        <option value="city">In what city were you born?</option>
+                    </select>
+
+                    <label for="securityAnswer">Security Answer</label>
+                    <input type="text" id="securityAnswer" name="securityAnswer" placeholder="Your answer">
+                </fieldset>
+            </section>
+
+            <section id="preferences">
+                <fieldset>
+                    <legend>Preferences</legend>
+                    
+                    <label>Subscription Type:</label>
+                    <div>
+                        <input type="radio" id="free" name="subscription" value="free" checked>
+                        <label for="free" style="display: inline;">Free</label>
+                        
+                        <input type="radio" id="premium" name="subscription" value="premium">
+                        <label for="premium" style="display: inline;">Premium</label>
+                    </div>
+
+                    <label>Interests (select all that apply):</label>
+                    <div>
+                        <input type="checkbox" id="technology" name="interests" value="technology">
+                        <label for="technology" style="display: inline;">Technology</label>
+                        
+                        <input type="checkbox" id="sports" name="interests" value="sports">
+                        <label for="sports" style="display: inline;">Sports</label>
+                        
+                        <input type="checkbox" id="music" name="interests" value="music">
+                        <label for="music" style="display: inline;">Music</label>
+                    </div>
+
+                    <label for="theme">Theme Color</label>
+                    <input type="color" id="theme" name="theme" value="#4CAF50">
+
+                    <label for="avatar">Profile Picture</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+                    <label for="website">Your Website</label>
+                    <input type="url" id="website" name="website" placeholder="https://example.com">
+
+                    <label for="notifications">Notification Volume</label>
+                    <input type="range" id="notifications" name="notifications" min="0" max="100" value="50">
+                </fieldset>
+            </section>
+
+            <section>
+                <h3>Sample Media</h3>
+                <p>Here's an example of embedded media:</p>
+                
+                <audio controls>
+                    <source src="sample.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <video width="400" controls>
+                    <source src="sample.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </section>
+
+            <section>
+                <h3>Terms and Conditions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Section</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Privacy</td>
+                            <td>We respect your privacy</td>
+                        </tr>
+                        <tr>
+                            <td>Data Usage</td>
+                            <td>Your data will be used responsibly</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    I agree to the terms and conditions*
+                </label>
+            </section>
+
+            <div style="text-align: center;">
+                <button type="submit">Register</button>
+                <button type="reset">Reset Form</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Registration Form. All rights reserved.</p>
+        <address>
+            Contact us at <a href="mailto:info@example.com">info@example.com</a>
+        </address>
+    </footer>
+</body>
+</html>
